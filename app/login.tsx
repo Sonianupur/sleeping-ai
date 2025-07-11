@@ -21,7 +21,8 @@ export default function LoginScreen() {
   const handleLogin = async () => {
     try {
       await loginUser(email, password);
-      alert('Logged in!');
+      alert('✅ Logged in!');
+      // Add redirect here if needed, e.g., router.replace('/dashboard');
     } catch (err: any) {
       alert(err.message);
     }
@@ -48,6 +49,8 @@ export default function LoginScreen() {
               value={email}
               onChangeText={setEmail}
               style={styles.input}
+              keyboardType="email-address"
+              autoCapitalize="none"
             />
 
             <Text style={styles.label}>Password</Text>
@@ -60,7 +63,7 @@ export default function LoginScreen() {
               style={styles.input}
             />
 
-            <TouchableOpacity onPress={() => alert('Forgot Password')}>
+            <TouchableOpacity onPress={() => router.push('/forgot-password')}>
               <Text style={styles.forgotText}>Forgot password?</Text>
             </TouchableOpacity>
 
@@ -91,9 +94,7 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
+  gradient: { flex: 1 },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -105,9 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
   },
-  ai: {
-    color: '#C084FC',
-  },
+  ai: { color: '#C084FC' },
   card: {
     flexDirection: 'row',
     backgroundColor: '#fff',
