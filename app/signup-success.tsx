@@ -1,5 +1,4 @@
-// app/signup-success.tsx
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
 export default function SignupSuccess() {
@@ -7,9 +6,11 @@ export default function SignupSuccess() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>🎉 Account Created!</Text>
+      <Text style={styles.emoji}>🎉</Text>
+      <Text style={styles.title}>Account Created!</Text>
       <Text style={styles.subtitle}>You're all set. Please log in to continue.</Text>
-      <TouchableOpacity onPress={() => router.push('/login')} style={styles.button}>
+
+      <TouchableOpacity style={styles.button} onPress={() => router.replace('/login')}>
         <Text style={styles.buttonText}>Go to Login</Text>
       </TouchableOpacity>
     </View>
@@ -17,14 +18,36 @@ export default function SignupSuccess() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },
-  title: { fontSize: 28, fontWeight: 'bold', marginBottom: 10 },
-  subtitle: { fontSize: 16, color: '#555', marginBottom: 30 },
+  container: {
+    flex: 1,
+    backgroundColor: '#f4f4f4',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  emoji: {
+    fontSize: 48,
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 30,
+    textAlign: 'center',
+  },
   button: {
     backgroundColor: '#4a2f63',
+    paddingHorizontal: 30,
     paddingVertical: 12,
-    paddingHorizontal: 40,
-    borderRadius: 8,
+    borderRadius: 10,
   },
-  buttonText: { color: '#fff', fontSize: 16 },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+  },
 });
